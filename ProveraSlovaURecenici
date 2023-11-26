@@ -1,0 +1,40 @@
+package ba.smoki.seven.branching;
+
+import javax.swing.*;
+
+/***
+ * <p>
+ *     Nadograditi zadatak {@link ContinueWithLabelDemo}
+ *     na način da ne daje odgovor samo: "Da li se riječ nalazi u rečenici"
+ *     <p>
+ *         Odgovor koji vi trebate dobiti je: "Koliko se puta riječ nalazi u rečenici ?"
+ *     </p>
+ * </p>
+ */
+public class ZadacaNova {
+    public static void main(String[] args) {
+      //Koristio sam toCharArray umesto char.At();
+
+        String recenica = JOptionPane.showInputDialog("Unesite recenicu");
+        String rec = JOptionPane.showInputDialog(" --> Unesite rec koju zelite proveriti <--");
+        int brojPonavljanja = 0;
+        Glavna :    for(int i=0;i<recenica.length();i++){
+            for(int j=0;j<rec.length();j++) {
+                char[] slovaURecenici = recenica.toCharArray();
+                char slovoRecenice = slovaURecenici[i+j];
+                char [] slovaUrec = rec.toCharArray();
+                char slovaReci = slovaUrec[j];
+                if(slovaReci!=slovoRecenice){
+                    continue Glavna;
+                }
+            }
+            brojPonavljanja++;
+        }
+        if(brojPonavljanja==0){
+            System.out.println("Rec se ne nalazi u recenici.");
+        } else if (brojPonavljanja==1) {
+            System.out.println("Rec se nalazi u recenici.");
+        } else
+        System.out.println("Rec " + rec + " se ponavlja " + brojPonavljanja + " Puta " + " u recenici.");
+    }
+}
